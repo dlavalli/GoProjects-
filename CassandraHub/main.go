@@ -9,9 +9,9 @@ GET /messages/UUID 	-- fetch an individual message from the database POST /messa
 
 import (
 	"encoding/json"
-	"github.com/gorilla/mux"
 	"github.com/MyGoProjects/CassandraHub/Cassandra"
 	"github.com/MyGoProjects/CassandraHub/Users"
+	"github.com/gorilla/mux"
 	"log"
 	"net/http"
 )
@@ -38,6 +38,12 @@ func main() {
 	// when a request is made for that endpoint.
 	router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/", heartbeat)
+	router.HandleFunc("/users/new", Users.Post)
+
+	/*
+	curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "firstname=Ian&lastname=Douglas&city=Boulder&email=ian@getstream.io&age=42" "http://localhost:8080/users/new"
+	{"id":"dc0936b2-2544-11eb-9c6b-a4bb6d526e0e"}
+	 */
 
 	// Start listening on the specified port or exist with an error log
 	log.Fatal(http.ListenAndServe(":8080", router))
