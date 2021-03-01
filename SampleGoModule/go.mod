@@ -1,3 +1,3 @@
-module github.com/dlavalli/GoProjects-/tree/main/SampleGoModule
+module github.com/dlavalli/GoProjects-/SampleGoModule
 
 go 1.15
