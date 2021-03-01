@@ -1,0 +1,6 @@
+This is a sample module that can then be imported as they are normally done for normal packages
+
+import (
+    calc "github.com/dlavalli/GoProjects-/tree/main/SampleGoModule/calc"
+    geometry "github.com/dlavalli/GoProjects-/tree/main/SampleGoModule/geometry"
+)
