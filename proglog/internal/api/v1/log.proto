@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package log.v1;
-option go_package = "github.com/MyGoProjects/proglog/internal/api/log_v1";
+option go_package = "github.com/dlavalli/GoProjects-/proglog/internal/api/log_v1";
 
 // repeated message Record  =>  []Record
 message Record {

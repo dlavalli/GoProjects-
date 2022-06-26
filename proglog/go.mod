@@ -1,5 +1,5 @@
-module github.com/MyGoProjects/proglog
+module github.com/dlavalli/GoProjects-/proglog
 
-go 1.16
+go 1.18
 
 require github.com/gorilla/mux v1.8.0

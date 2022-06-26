@@ -1,8 +1,8 @@
 package main
 
 import (
+	"github.com/dlavalli/GoProjects-/proglog/internal/server"
 	"log"
-	"github.com/MyGoProjects/proglog/internal/server"
 )
 
 func main() {
