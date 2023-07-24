@@ -1,10 +1,14 @@
 package main
 
 import (
+	"Samples/tools"
+	_ "embed"
 	"fmt"
-	"github.com/MyGoProjects/Samples/tools"
 	"math"
 )
+
+//go:embed resources/filename.txt
+var resources []byte
 
 // ##################### Interface / Struct - case 1 ##########################################
 // Since using pointer to as receiver, modifications made on instances passed to functions affect
@@ -19,7 +23,7 @@ type namesetter interface {
 	setName(string)
 }
 type mystrid struct {
-	val int
+	val  int
 	name string
 }
 
@@ -43,26 +47,26 @@ type Shape interface {
 	Perimeter() float64
 }
 type Rect struct {
-	width float64
+	width  float64
 	height float64
 }
 type Circle struct {
 	radius float64
 }
+
 func (r Rect) Area() float64 {
-	return r.width * r.height;
+	return r.width * r.height
 }
 func (r Rect) Perimeter() float64 {
-	return 2 * (r.width + r.height);
+	return 2 * (r.width + r.height)
 }
 
 func (c Circle) Area() float64 {
-	return math.Pi * c.radius * c.radius;
+	return math.Pi * c.radius * c.radius
 }
 func (c Circle) Perimeter() float64 {
-	return 2 * math.Pi * c.radius;
+	return 2 * math.Pi * c.radius
 }
-
 
 // ########################### Example with array / slice 1 ####################################
 
@@ -72,11 +76,13 @@ func printSlice(sl []int) {
 
 // ########################### Example with map 1 ####################################
 
-
-
 // ############################################################################################
 
 func main() {
+
+	//Convert the file content from byte slice to string and print
+	fmt.Println(string(resources))
+
 	// string ops
 	r := tools.ReverseString("Hello world!")
 	tools.PrintStringChars(r)
@@ -84,7 +90,6 @@ func main() {
 	// Fibonacci example
 	f1 := tools.FibonacciRecur(4)
 	fmt.Printf("Fibonnaci of: %d is %d\n\n", 4, f1)
-
 
 	// ##################### Interface / Struct - case 1 ##########################################
 
@@ -109,7 +114,7 @@ func main() {
 
 	// ##################### Interface / Struct - case 2 ##########################################
 
-    var sh1, sh2 Shape
+	var sh1, sh2 Shape
 	r1 := Rect{width: 10, height: 10}
 	c1 := Circle{radius: 5}
 	sh1 = r1
@@ -124,14 +129,14 @@ func main() {
 	}
 	printSlice(sl)
 
-	arr := []int {1,2,3,4,5,6,7,8,9}
-	fmt.Printf("The array sum is: %d\n", tools.SumArray(arr));
+	arr := []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
+	fmt.Printf("The array sum is: %d\n", tools.SumArray(arr))
 
 	// ########################### Example with map 1 ####################################
 	mv := map[string]int{
-		"a" : 1,
-		"b" : 2,
-		"c" : 3,
+		"a": 1,
+		"b": 2,
+		"c": 3,
 	}
 
 	nv := make(map[string]int)
@@ -147,13 +152,13 @@ func main() {
 
 	// Order of key returned is not garanied and can change from one call to the next
 	for key, val := range mv {
-		fmt.Printf("An mv map entry: key : %s value: %d\n", key, val);
+		fmt.Printf("An mv map entry: key : %s value: %d\n", key, val)
 	}
 	for key, val := range nv {
-		fmt.Printf("An nv map entry: key : %s value: %d\n", key, val);
+		fmt.Printf("An nv map entry: key : %s value: %d\n", key, val)
 	}
 	for key, val := range ov {
-		fmt.Printf("An ov map entry: key : %s value: %d\n", key, val);
+		fmt.Printf("An ov map entry: key : %s value: %d\n", key, val)
 	}
 
 	// ########################### Function pointer / Closures ####################################
