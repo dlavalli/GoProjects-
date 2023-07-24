@@ -5,15 +5,24 @@ import (
 	"sync"
 )
 
+type Record struct {
+	Value  []byte `json:"value"`
+	Offset uint64 `json:"offset"`
+}
+
 type Log struct {
-	mu sync.Mutex
+	mu      sync.Mutex
 	records []Record
 }
 
+var ErrOffsetNotFound = fmt.Errorf("offset not found")
+
+// NewLog instantiates a Log
 func NewLog() *Log {
 	return &Log{}
 }
 
+// Append adds a record to the end of the existing ones
 func (c *Log) Append(record Record) (uint64, error) {
 	c.mu.Lock()
 	defer c.mu.Unlock()
@@ -23,6 +32,7 @@ func (c *Log) Append(record Record) (uint64, error) {
 	return record.Offset, nil
 }
 
+// Read will read a log record at the specified 0-based index
 func (c *Log) Read(offset uint64) (Record, error) {
 	c.mu.Lock()
 	defer c.mu.Unlock()
@@ -32,10 +42,3 @@ func (c *Log) Read(offset uint64) (Record, error) {
 	}
 	return c.records[offset], nil
 }
-
-type Record struct {
-	Value []byte `json:"value""`
-	Offset uint64 `json:"offset"`
-}
-
-var ErrOffsetNotFound = fmt.Errorf("offset not found")
