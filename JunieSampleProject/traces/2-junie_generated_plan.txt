@@ -1,0 +1,37 @@
+1. Explore the current project structure
+2. Set up the recommended project structure according to guidelines
+- Create cmd/myapp directory
+- Create internal directory
+- Create internal/auth directory
+- Create internal/db directory
+- Create internal/handlers directory
+- Create internal/middleware directory
+- Create pkg directory
+- Create pkg/utils directory
+- Create api directory
+- Create configs directory
+- Create deployments directory
+- Create scripts directory
+- Create web directory
+- Create test directory
+- Create build directory
+3. Initialize Go modules if not already done
+4. Add Gin framework as a dependency
+5. Create a basic REST API with Gin
+- Create main.go in cmd/myapp
+- Create models
+- Create handlers
+- Update main.go to use the handlers
+- Set up middleware
+- Update main.go to use the middleware
+6. Add unit tests for the API endpoints
+- Create tests for utility functions
+- Create tests for API endpoints
+7. Create a Dockerfile
+8. Ensure the project builds correctly for multiple platforms
+9. Document the API and usage in README.md
+10. Add a configuration file
+11. Create a build script
+12. Create an API specification file
+13. Create a simple web frontend
+14. Update main.go to serve the static HTML page

@@ -1,0 +1,2 @@
+- Create .junie/guidelines.md and add project overview
+- Build a REST based application using Gin Framework
