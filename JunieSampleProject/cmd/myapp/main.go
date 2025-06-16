@@ -4,11 +4,11 @@ import (
 	"JunieSampleProject/internal/db"
 	"JunieSampleProject/internal/handlers"
 	"JunieSampleProject/internal/middleware"
-	"github.com/gin-contrib/cors"
+	//"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
-	"time"
+	//"time"
 )
 
 func main() {
@@ -49,7 +49,7 @@ func main() {
 	// Define a simple health check endpoint
 	router.GET("/health", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
-			"status": "ok",
+			"status":  "ok",
 			"message": "Service is up and running",
 		})
 	})
